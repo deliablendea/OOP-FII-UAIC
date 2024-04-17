@@ -1,0 +1,33 @@
+Write the classMatrix, whose objects are bidimensional arrays arranged in row and column so that the following code:
+
+int main()
+{
+	Matrix m(4, 3);
+	m.fill(5); m(0, 0) = 30; m(3, 2) = 20;
+	m.print();printf("W:%d,H:%d,Size:%d\n", m["width"], m["height"], m["size"]);
+	Matrix s(3, 3);
+	if (s.is_square_matrix()) { printf("Square\n"); }
+	s.fill(0);
+	s(0, 0) = 1; s(1, 1) = 1; s(2, 2) = 1;
+	if (s.is_identity_matrix()) { printf("Identity\n"); }
+	s.print();
+	if (m == s) { printf("Egale"); } else { printf("diferite"); }
+}
+
+compiles and upon execution prints the following to the screen:
+
+30  5  5  5
+ 5  5  5  5
+ 5  5  5 20
+W:4,H:3,Size:48
+Square
+Identity
+ 1  0  0
+ 0  1  0
+ 0  0  1
+diferite
+
+Observations:
+●For the purpose of this example, we will consider that all indexes are correct (within thelimit of the initialized matrix) and the size of the matrix (width and height) uponinitialization is correct (bigger than 0).
+●The data where the matrix values are stored,  MUST be dynamically allocated (via newoperator). Using a fixed size buffer/matrix will NOT be considered a valid solution.
+●The “size” of a matrix is its width multiplied with its height and the size of an int (4 bytes)
