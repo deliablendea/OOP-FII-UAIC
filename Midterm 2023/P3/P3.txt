@@ -1,0 +1,24 @@
+Write classes Add, Sub, Neg, Value and Expression (modeling integer expressions) so that thefollowing code:
+
+int main()
+{
+	Expression* e = new Add(new Neg(new Sub(new Value(10), new Value(20))), new Value(5));
+	e->print();
+	printf(" =  %d\n", e->compute());
+	printf("%d parameter(s) => (left = %d, right = %d)\n",
+		e->get_children_count(), e->get_child(0)->compute(),
+		e->get_child(1)->compute());
+	Expression* left = e->get_child(0);
+	printf("%d parameter(s) => (value = %d)\n",
+		left->get_children_count(), left->get_child(0)->compute());
+	delete e;
+}
+
+compiles and upon execution prints the following to the screen:
+
+(( - (10 - 20)) + 5) =  15
+2 parameter(s) => (left = 10, right = 5)
+1 parameter(s) => (value = -10)
+
+Observations:
+●For the purpose of this example, you need to consider polymorphism (as a concept that can help you solve this problem).
