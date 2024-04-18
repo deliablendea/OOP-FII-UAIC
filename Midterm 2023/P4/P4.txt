@@ -1,0 +1,30 @@
+Write the templateSingleLinkedList (modeling the behavior of a single linked list) so that the following code:
+
+void print(const int& value) { printf("%d ", value); }
+int main() {
+	SingleLinkedList<int> s;
+	(((s += 10) += 20) += 30);
+	s.print(print);
+	if (s && 20) {
+		printf("\n 20 is in the list !");
+	}
+	if (!(s && 25)) {
+		printf("\n 25 is not in the list !");
+	}
+	while (s) {
+		printf("\n%d", s.pop_first());
+	}
+}
+
+compiles and upon execution prints the following to the screen:
+
+10 20 30
+
+ 20 is in the list !
+ 25 is not in the list !
+10
+20
+30
+
+Observations:
+●We will only offer points for a single linked list based on a template (any other implementation will not be graded).
