@@ -11,7 +11,7 @@ char ASCIItoLower(char it) {
 void SplitSentence(const std::string& myString, std::map<std::string, int>& myMap) {
 	std::string myWord;
 	for (unsigned int i = 0; i < myString.size(); i++)
-		if (strchr(" ,?!.", myString[i]) == nullptr)
+		if (myString[i] != ' ' && myString[i] != '.' && myString[i] != ',' && myString[i] != '?' && myString[i] != '!')
 			myWord += myString[i];
 		else {
 			if(myWord != "") myMap[myWord]++;
