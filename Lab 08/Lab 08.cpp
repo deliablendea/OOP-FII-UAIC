@@ -9,9 +9,9 @@ char ASCIItoLower(char it) {
 }
 
 void SplitSentence(const std::string& myString, std::map<std::string, int>& myMap) {
-	std::string myWord;
-	for (unsigned int i = 0; i < myString.size(); i++)
-		if (myString[i] != ' ' && myString[i] != '.' && myString[i] != ',' && myString[i] != '?' && myString[i] != '!')
+	std::string myWord, delimiters = " .,?!";
+	for (size_t i = 0; i < myString.length(); i++)
+		if (delimiters.find_first_of(myString[i]) == std::string::npos)
 			myWord += myString[i];
 		else {
 			if(myWord != "") myMap[myWord]++;
@@ -44,6 +44,8 @@ int main() {
 		return 0;
 	}
 
+	myFile.close();
+
 	// Transform myString into lowercase
 	std::transform(myString.begin(), myString.end(), myString.begin(), ASCIItoLower);
 
@@ -56,12 +58,16 @@ int main() {
 	for (auto mapIterator = myMap.begin(); mapIterator != myMap.end(); mapIterator++)
 		myPriorityQueue.push(std::pair<std::string, int>(mapIterator->first, mapIterator->second));
 
+	/*
+		for (auto it : myMap)
+			myPriorityQueue.push(std::pair<std::string, int>(it.first, it.second));
+	*/
+
 	// Print the sorted words
 	while (!myPriorityQueue.empty()) {
 		printf("%s => %d\n", myPriorityQueue.top().first.c_str(), myPriorityQueue.top().second);
 		myPriorityQueue.pop();
 	}
 
-	myFile.close();
 	return 0;
 }
